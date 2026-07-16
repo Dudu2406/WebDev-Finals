@@ -1,0 +1,1 @@
+upload schema.sql in phpmyadmin for it to work
