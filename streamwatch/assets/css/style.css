@@ -1,25 +1,18 @@
-/* ==========================================================================
-   StreamWatch — stylesheet
-   Design concept: a "broadcast desk" — dark control-room background,
-   signal-violet accent for primary actions, amber for ratings/live cues,
-   monospace used for channel meta the way a stream overlay shows stats.
-   ========================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-    --bg:            #14151f;
-    --bg-raised:     #1b1d2b;
-    --surface:       #21243560;
-    --surface-solid: #21243a;
-    --border:        #33364d;
-    --text:          #edeef5;
-    --text-muted:    #9698b3;
-    --accent:        #7c5cff;
-    --accent-soft:   #7c5cff26;
-    --amber:         #ffb454;
-    --amber-soft:    #ffb45426;
-    --danger:        #ff6b7a;
+    --bg:            #f9f9fb;
+    --bg-raised:     #ffffff;
+    --surface:       #f0f2f6;
+    --surface-solid: #ffffff;
+    --border:        #d0d4e0;
+    --text:          #1a1a1a;
+    --text-muted:    #6b6f7a;
+    --accent:        #4a90e2;   
+    --accent-soft:   #4a90e226;
+    --amber:         #f5a623;   
+    --amber-soft:    #f5a62326;
+    --danger:        #e94e77;
     --radius:        10px;
     --font-display:  'Space Grotesk', sans-serif;
     --font-body:     'Inter', sans-serif;
@@ -33,20 +26,15 @@ html { scroll-behavior: smooth; }
 body {
     margin: 0;
     background: var(--bg);
-    background-image:
-        radial-gradient(circle at 15% 0%, #2a1f4d40 0%, transparent 45%),
-        radial-gradient(circle at 85% 15%, #1f3a4d33 0%, transparent 40%);
-    background-attachment: fixed;
     color: var(--text);
     font-family: var(--font-body);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
 }
 
 .container {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 40px;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -69,12 +57,12 @@ p { margin: 0 0 1em; color: var(--text-muted); }
     * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* ---------------- Header / nav ---------------- */
+/* Header */
 
 .site-header {
     border-bottom: 1px solid var(--border);
-    background: #14151fcc;
-    backdrop-filter: blur(10px);
+    background: var(--bg-raised);
+    backdrop-filter: blur(6px);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -221,7 +209,7 @@ textarea { resize: vertical; min-height: 90px; }
     margin-bottom: 16px;
 }
 
-/* ---------------- Hero / page heads ---------------- */
+/* Hero / Page heads */
 
 .page-hero {
     padding: 48px 0 24px;
@@ -256,7 +244,7 @@ textarea { resize: vertical; min-height: 90px; }
 .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); }
 .page-hero .lede { max-width: 560px; }
 
-/* ---------------- Search / filter bar ---------------- */
+/* Search and Filter Bar */
 
 .filter-bar {
     display: flex;
@@ -271,7 +259,7 @@ textarea { resize: vertical; min-height: 90px; }
 .filter-bar input, .filter-bar select { max-width: 240px; }
 .filter-bar .filter-actions { display: flex; gap: 8px; align-items: center; }
 
-/* ---------------- Creator grid & cards ---------------- */
+/* Creator sections */
 
 .creator-grid {
     display: grid;
@@ -284,13 +272,11 @@ textarea { resize: vertical; min-height: 90px; }
     background: var(--surface-solid);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    padding: 24px;
     transition: transform 0.15s, border-color 0.15s;
     border-left: 3px solid var(--tag-color, var(--accent));
 }
+
 .creator-card:hover { transform: translateY(-3px); border-color: var(--accent); }
 
 .creator-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
@@ -323,11 +309,12 @@ textarea { resize: vertical; min-height: 90px; }
     font-size: 0.87rem;
     color: var(--text-muted);
     margin: 0;
+    overflow: clip;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    line-clamp: 2;
 }
+
 
 .creator-meta {
     display: flex;
@@ -352,7 +339,7 @@ textarea { resize: vertical; min-height: 90px; }
     border-radius: var(--radius);
 }
 
-/* ---------------- Creator profile page ---------------- */
+/* Creator Profile Page */
 
 .profile-head {
     display: flex;
@@ -386,7 +373,7 @@ textarea { resize: vertical; min-height: 90px; }
 }
 .profile-stats strong { color: var(--text); font-size: 1.1rem; display: block; font-family: var(--font-display); }
 
-/* ---------------- Reviews ---------------- */
+/* Reviews */
 
 .review-form {
     background: var(--surface-solid);
@@ -396,8 +383,6 @@ textarea { resize: vertical; min-height: 90px; }
     margin-bottom: 28px;
 }
 
-/* Radios are marked up 5..1 in the HTML; row-reverse displays them 1..5
-   so that ":checked ~ label" / ":hover ~ label" fill everything to the left. */
 .star-picker {
     display: flex;
     flex-direction: row-reverse;
@@ -438,7 +423,7 @@ textarea { resize: vertical; min-height: 90px; }
 .review-text { margin: 0; color: var(--text); }
 .review-actions { display: flex; gap: 8px; margin-top: 10px; }
 
-/* ---------------- Favorites page ---------------- */
+/* Favourite */
 
 .fav-list { display: flex; flex-direction: column; gap: 12px; }
 .fav-row {
@@ -483,7 +468,7 @@ textarea { resize: vertical; min-height: 90px; }
 
 .admin-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
 
-/* ---------------- Footer ---------------- */
+/* Footer */
 
 .site-footer {
     border-top: 1px solid var(--border);
@@ -491,10 +476,11 @@ textarea { resize: vertical; min-height: 90px; }
     padding: 28px 0 60px;
     color: var(--text-muted);
     font-size: 0.85rem;
+    background: var(--surface);
 }
 .footer-note { font-size: 0.78rem; opacity: 0.7; margin: 0; }
 
-/* ---------------- Responsive ---------------- */
+/* Responsiveness */
 
 @media (max-width: 640px) {
     .header-inner { flex-direction: column; align-items: flex-start; }

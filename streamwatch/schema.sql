@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS creators (
     id           INT AUTO_INCREMENT PRIMARY KEY,
     name         VARCHAR(100) NOT NULL,
     content_type VARCHAR(50)  NOT NULL,   -- Gaming, Vlogs, Music, Education, etc.
-    platform     VARCHAR(50)  DEFAULT NULL, -- YouTube, Twitch, Both...
+    platform     VARCHAR(50)  DEFAULT NULL, -- YouTube, Twitch, Kick, Both...
     description  TEXT,
     image_url    VARCHAR(255) DEFAULT NULL,
     created_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -70,9 +70,11 @@ INSERT INTO users (username, email, password_hash, is_admin) VALUES
 ('admin', 'admin@streamwatch.local', '$2y$10$l9YVdx6d4zyHvaHJZzgme.8dBXHD5XMNketRyfvkKiqA5HnV1bmzS', 1);
 
 -- Sample creators
+-- Sample creators
 INSERT INTO creators (name, content_type, platform, description, image_url) VALUES
 ('PixelForge', 'Gaming', 'Twitch', 'Speedruns, co-op nights, and the occasional rage quit. Known for a laid-back chat and Friday marathon streams.', NULL),
 ('WanderNotes', 'Vlogs', 'YouTube', 'Slow-travel vlogs from small towns most tourists skip. Weekly uploads with a focus on food and local history.', NULL),
 ('LoFi Lantern', 'Music', 'YouTube', '24/7 lofi and ambient mixes for studying, plus monthly original beat tapes.', NULL),
 ('CodeCampfire', 'Education', 'Twitch', 'Live coding sessions building real projects from scratch, beginner-friendly explanations included.', NULL),
-('Kitchen Static', 'Cooking', 'YouTube', 'Weeknight recipes tested for people who hate doing dishes. Fast, funny, and occasionally chaotic.', NULL);
+('Kitchen Static', 'Cooking', 'YouTube', 'Weeknight recipes tested for people who hate doing dishes. Fast, funny, and occasionally chaotic.', NULL),
+('Nightslate', 'Gaming', 'Kick', 'Late-night just-chatting and gaming streams with a fast-growing, tight-knit community.', NULL);
