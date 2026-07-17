@@ -47,7 +47,11 @@ if (is_logged_in()) {
 ?>
 
 <div class="profile-head">
-    <div class="profile-avatar"><?= h(mb_substr($creator['name'], 0, 1)) ?></div>
+    <?php if (!empty($creator['image_url'])): ?>
+        <img src="<?= h($creator['image_url']) ?>" alt="<?= h($creator['name']) ?>" class="profile-avatar-img">
+    <?php else: ?>
+        <div class="profile-avatar"><?= h(mb_substr($creator['name'], 0, 1)) ?></div>
+    <?php endif; ?>
     <div class="profile-info">
         <span class="tag"><?= h($creator['content_type']) ?></span>
         <h1><?= h($creator['name']) ?></h1>

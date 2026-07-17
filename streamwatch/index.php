@@ -71,7 +71,11 @@ function tag_color(string $type, array $palette, array $allTypes): string {
             <a class="creator-card" style="--tag-color: <?= tag_color($creator['content_type'], $tag_colors, $types) ?>"
                href="creator.php?id=<?= (int)$creator['id'] ?>">
                 <div class="creator-card-top">
-                    <div class="creator-avatar"><?= h(mb_substr($creator['name'], 0, 1)) ?></div>
+                    <?php if (!empty($creator['image_url'])): ?>
+                        <img src="<?= h($creator['image_url']) ?>" alt="<?= h($creator['name']) ?>" class="creator-avatar-img">
+                    <?php else: ?>
+                        <div class="creator-avatar"><?= h(mb_substr($creator['name'], 0, 1)) ?></div>
+                    <?php endif; ?>
                     <span class="tag" style="--tag-color: <?= tag_color($creator['content_type'], $tag_colors, $types) ?>"><?= h($creator['content_type']) ?></span>
                 </div>
                 <h3><?= h($creator['name']) ?></h3>

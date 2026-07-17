@@ -289,6 +289,12 @@ textarea { resize: vertical; min-height: 90px; }
     flex-shrink: 0;
 }
 
+.creator-avatar-img {
+    width: 44px; height: 44px; border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
 .creator-card h3 { margin: 0; font-size: 1.05rem; }
 
 .tag {
@@ -356,6 +362,12 @@ textarea { resize: vertical; min-height: 90px; }
     background: linear-gradient(135deg, var(--accent), #4a3aa8);
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-display); font-weight: 700; font-size: 2rem; color: #fff;
+    flex-shrink: 0;
+}
+
+.profile-avatar-img {
+    width: 84px; height: 84px; border-radius: 20px;
+    object-fit: cover;
     flex-shrink: 0;
 }
 
