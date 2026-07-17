@@ -26,7 +26,7 @@ $page_title = $page_title ?? 'StreamWatch';
                 <?php if (is_admin()): ?>
                     <a href="<?= isset($in_subdir) ? '' : 'admin/' ?>index.php">Admin</a>
                 <?php endif; ?>
-                <span class="nav-user">Hi, <?= h($_SESSION['username']) ?></span>
+                <span class="nav-user"><?= h($_SESSION['username']) ?></span>
                 <a href="<?= isset($in_subdir) ? '../' : '' ?>logout.php">Log out</a>
             <?php else: ?>
                 <a href="<?= isset($in_subdir) ? '../' : '' ?>login.php">Log in</a>
