@@ -117,4 +117,3 @@ INSERT INTO creators (name, content_type, platform, description, image_url) VALU
 ('Logan Paul', 'Entertainment', 'YouTube', 'Content creator, podcaster, and boxer known for his vlogs, comedy sketches, and boxing events.', NULL);
 ('Jake Paul', 'Entertainment', 'YouTube', 'Content creator, entrepreneur, and boxer known for his vlogs, pranks, and boxing career.', NULL);
 ('Denji', 'Entertainment', 'YouTube', 'Shares comedy commentary, gaming clips, reaction videos and personal lifestyle updates.', NULL);
-
