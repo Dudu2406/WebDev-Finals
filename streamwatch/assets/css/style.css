@@ -97,8 +97,9 @@ p { margin: 0 0 1em; color: var(--text-muted); }
 .main-nav a:hover { color: var(--text); }
 
 .nav-user {
-    color: var(--text-muted);
+    color: var(--text);
     font-size: 0.85rem;
+    font-weight: bold;
     font-family: var(--font-mono);
 }
 
