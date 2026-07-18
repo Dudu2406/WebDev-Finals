@@ -1,3 +1,14 @@
-upload schema.sql in phpmyadmin for it to work (demo run)
+Requirements
+- XAMPP (Apache and MySQL)
+- PHPMyAdmin
 
-put it in htdocs and type in localhost in your browser then select "streamwatch" folder
+
+Start XAMPP
+Open the XAMPP Control Panel and start the following services:
+- Apache
+- MySQL
+
+Import schema.sql the database to:
+http://localhost/phpmyadmin/
+
+
