@@ -16,7 +16,7 @@ if (!$creator) {
 
 $page_title = $creator['name'] . ' — StreamWatch';
 
-// Reviews + reviewer names
+// Reviews and reviewer names
 $reviewStmt = $pdo->prepare(
     "SELECT r.*, u.username FROM reviews r
      JOIN users u ON u.id = r.user_id
@@ -29,7 +29,6 @@ $reviews = $reviewStmt->fetchAll();
 $review_count = count($reviews);
 $avg_rating = $review_count ? round(array_sum(array_column($reviews, 'rating')) / $review_count, 1) : 0;
 
-// Does the current user already have a review here?
 $my_review = null;
 if (is_logged_in()) {
     foreach ($reviews as $r) {
@@ -37,7 +36,6 @@ if (is_logged_in()) {
     }
 }
 
-// Is this creator already in the current user's favorites?
 $is_favorited = false;
 if (is_logged_in()) {
     $favStmt = $pdo->prepare("SELECT id FROM favorites WHERE user_id = :u AND creator_id = :c");

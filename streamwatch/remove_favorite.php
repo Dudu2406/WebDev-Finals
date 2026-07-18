@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 verify_csrf($_POST['csrf_token'] ?? null);
 
 $creator_id = (int)($_POST['creator_id'] ?? 0);
-// Where the request should return to: creator profile (default) or the favorites list itself.
+
 $redirect = ($_POST['redirect'] ?? '') === 'favorites' ? 'favorites.php' : ('creator.php?id=' . $creator_id);
 
 $stmt = $pdo->prepare("DELETE FROM favorites WHERE user_id = :user_id AND creator_id = :creator_id");

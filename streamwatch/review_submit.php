@@ -21,7 +21,7 @@ if ($rating < 1 || $rating > 5) {
     exit;
 }
 
-// Confirm the creator exists
+// Check if creator exists
 $check = $pdo->prepare("SELECT id FROM creators WHERE id = :id");
 $check->execute([':id' => $creator_id]);
 if (!$check->fetch()) {
@@ -29,7 +29,7 @@ if (!$check->fetch()) {
     die('Creator not found.');
 }
 
-// One review per user per creator — insert, or update if it already exists.
+// Insert new review or update existing review
 $stmt = $pdo->prepare(
     "INSERT INTO reviews (user_id, creator_id, rating, review_text)
      VALUES (:user_id, :creator_id, :rating, :text)

@@ -2,7 +2,7 @@
 $page_title = 'StreamWatch — Track your favorite creators';
 require_once __DIR__ . '/includes/header.php';
 
-// --- Search & filter ---
+// Search and filter
 $search  = trim($_GET['q'] ?? '');
 $type    = trim($_GET['type'] ?? '');
 
@@ -28,10 +28,10 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $creators = $stmt->fetchAll();
 
-// Distinct content types for the filter dropdown
+// Get content types for dropdown
 $types = $pdo->query("SELECT DISTINCT content_type FROM creators ORDER BY content_type")->fetchAll(PDO::FETCH_COLUMN);
 
-// A small deterministic color per content type, purely visual
+// Color for each content type
 $tag_colors = ['#7c5cff', '#ffb454', '#22c98e', '#ff8a5c', '#5cc8ff', '#ff5c9e'];
 function tag_color(string $type, array $palette, array $allTypes): string {
     $i = array_search($type, $allTypes);

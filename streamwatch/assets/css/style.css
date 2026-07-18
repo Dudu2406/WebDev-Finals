@@ -110,7 +110,7 @@ p { margin: 0 0 1em; color: var(--text-muted); }
 }
 .btn-nav:hover { background: #6a49f0; }
 
-/* ---------------- Flash messages ---------------- */
+/*  Flash messages  */
 
 .flash {
     margin: 20px 0;
@@ -122,7 +122,7 @@ p { margin: 0 0 1em; color: var(--text-muted); }
 .flash-success { background: #22c98e1a; border-color: #22c98e44; color: #6fe3bb; }
 .flash-error   { background: #ff6b7a1a; border-color: #ff6b7a44; color: #ff9aa5; }
 
-/* ---------------- Buttons / forms ---------------- */
+/*  Buttons / forms  */
 
 .btn {
     display: inline-flex;
@@ -209,7 +209,7 @@ textarea { resize: vertical; min-height: 90px; }
     margin-bottom: 16px;
 }
 
-/* Hero / Page heads */
+/* Page heads */
 
 .page-hero {
     padding: 48px 0 24px;
@@ -451,7 +451,7 @@ textarea { resize: vertical; min-height: 90px; }
 .fav-row-info { flex: 1; }
 .fav-row-info h3 { margin: 0 0 2px; font-size: 1rem; }
 
-/* ---------------- Admin ---------------- */
+/*  Admin  */
 
 .admin-table {
     width: 100%;

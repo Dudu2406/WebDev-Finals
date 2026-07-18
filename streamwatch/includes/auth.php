@@ -1,13 +1,4 @@
 <?php
-/**
- * Session bootstrap + authentication/authorization helpers.
- * Included at the top of every page (via header.php) so session state
- * and CSRF protection are always available.
- */
-
-// Buffer output so that pages which check permissions (require_login/require_admin)
-// *after* including header.php can still redirect with header() — without this,
-// the HTML already echoed by header.php would make any later header() call fail.
 if (ob_get_level() === 0) {
     ob_start();
 }
@@ -16,25 +7,25 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-/** Is anyone logged in right now? */
+// Check if the user is logged in
 function is_logged_in(): bool
 {
     return isset($_SESSION['user_id']);
 }
 
-/** Is the logged-in user an admin? */
+// Check if the user is an admin
 function is_admin(): bool
 {
     return is_logged_in() && !empty($_SESSION['is_admin']);
 }
 
-/** Current user's id, or null if logged out. */
+// Get the current user id
 function current_user_id(): ?int
 {
     return $_SESSION['user_id'] ?? null;
 }
 
-/** Bounce non-logged-in visitors to the login page. */
+// Send non logged in users to login page
 function require_login(): void
 {
     if (!is_logged_in()) {
@@ -43,7 +34,7 @@ function require_login(): void
     }
 }
 
-/** Bounce non-admins away from admin-only pages. */
+// Stop non admin users from admin pages 
 function require_admin(): void
 {
     require_login();
@@ -53,7 +44,7 @@ function require_admin(): void
     }
 }
 
-/** Generate (or reuse) a CSRF token for the current session. */
+// Create or get CSRF token
 function csrf_token(): string
 {
     if (empty($_SESSION['csrf_token'])) {
@@ -62,7 +53,7 @@ function csrf_token(): string
     return $_SESSION['csrf_token'];
 }
 
-/** Validate a submitted CSRF token, ending the request if it's wrong. */
+// Check if CSRF token is valid
 function verify_csrf(?string $token): void
 {
     if (!$token || !hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
@@ -71,19 +62,19 @@ function verify_csrf(?string $token): void
     }
 }
 
-/** Small helper to escape output consistently. */
+// Escape text for safe display
 function h(?string $value): string
 {
     return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
 }
 
-/** Set a one-time flash message shown on the next page load. */
+// Save a message to show once
 function flash(string $message, string $type = 'success'): void
 {
     $_SESSION['flash'] = ['message' => $message, 'type' => $type];
 }
 
-/** Pull (and clear) the current flash message, if any. */
+// Get and remove flash message
 function get_flash(): ?array
 {
     if (empty($_SESSION['flash'])) {

@@ -13,7 +13,7 @@ verify_csrf($_POST['csrf_token'] ?? null);
 
 $id = (int)($_POST['id'] ?? 0);
 
-// ON DELETE CASCADE on reviews/favorites takes care of related rows.
+// Related reviews and favorites are deleted as well!!!
 $stmt = $pdo->prepare("DELETE FROM creators WHERE id = :id");
 $stmt->execute([':id' => $id]);
 

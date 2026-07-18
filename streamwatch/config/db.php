@@ -1,9 +1,4 @@
 <?php
-/**
- * Database connection.
- * Update the four constants below to match your local MySQL setup.
- */
-
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'streamwatch');
 define('DB_USER', 'root');
@@ -21,6 +16,6 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    // In production you would log this instead of showing it to the user.
+    // Save error to log file instead of showing it
     die("Database connection failed: " . htmlspecialchars($e->getMessage()));
 }
