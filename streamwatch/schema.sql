@@ -1,13 +1,7 @@
--- StreamWatch Database Schema
--- Run this file once to create the database, tables, and some sample data.
--- Example: mysql -u root -p < schema.sql
-
 CREATE DATABASE IF NOT EXISTS streamwatch CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE streamwatch;
 
--- ---------------------------------------------------------------
 -- Users
--- ---------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS users (
     id            INT AUTO_INCREMENT PRIMARY KEY,
     username      VARCHAR(50)  NOT NULL UNIQUE,
@@ -17,9 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
     created_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
--- ---------------------------------------------------------------
--- Creators (streamers / YouTubers)
--- ---------------------------------------------------------------
+-- Creators (Twitch Streamers / YouTubers)
 CREATE TABLE IF NOT EXISTS creators (
     id           INT AUTO_INCREMENT PRIMARY KEY,
     name         VARCHAR(100) NOT NULL,
@@ -30,9 +22,7 @@ CREATE TABLE IF NOT EXISTS creators (
     created_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
--- ---------------------------------------------------------------
--- Reviews (star rating + text, one per user per creator)
--- ---------------------------------------------------------------
+-- Reviews 
 CREATE TABLE IF NOT EXISTS reviews (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     user_id     INT NOT NULL,
@@ -47,9 +37,7 @@ CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (creator_id) REFERENCES creators(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- ---------------------------------------------------------------
--- Favorites (a user's followed-creator list)
--- ---------------------------------------------------------------
+-- Favorites 
 CREATE TABLE IF NOT EXISTS favorites (
     id         INT AUTO_INCREMENT PRIMARY KEY,
     user_id    INT NOT NULL,
@@ -60,12 +48,7 @@ CREATE TABLE IF NOT EXISTS favorites (
     FOREIGN KEY (creator_id) REFERENCES creators(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- ---------------------------------------------------------------
--- Seed data
--- ---------------------------------------------------------------
-
--- Admin account -> username: admin / password: admin123
--- (hash below corresponds to "admin123", generated with PHP password_hash)
+-- Admin account >> username: admin / password: admin123
 INSERT INTO users (username, email, password_hash, is_admin) VALUES
 ('admin', 'admin@streamwatch.local', '$2y$10$l9YVdx6d4zyHvaHJZzgme.8dBXHD5XMNketRyfvkKiqA5HnV1bmzS', 1);
 
